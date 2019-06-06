@@ -61,6 +61,7 @@ body {
   margin-top: -1px; /* Prevent double borders */
   background-color: #f6f6f6;
   padding: 12px;
+  cursor: default;
   text-decoration: none;
   font-family: Tw Cen MT;
   font-size: 18px;
@@ -112,12 +113,12 @@ body {
 </div>
 
 <div class="header" id="myHeader">
-  <input style="font-family:Tw Cen MT;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for food..." title="Type in a name" autofocus>
+  <input style="font-family:Tw Cen MT;" type="text" id="myInput" onkeyup="FunctionOne()" placeholder="Search for food..." title="Type in a name" autofocus>
 </div>
 
 <div class="content">
 
-<ul id=list>
+<ul id="list">
 <lh class=title>Drinks</lh>
   <li><a style="padding: 6px 12px">Coffee<br><small>All varieties, including: </small><span class=check>✓</span></a></li>
   <li><a style="padding: 6px 12px">Fountain Soda<br><small>All varieties, including: </small><span class=check>✓</span></a></li>
@@ -132,7 +133,7 @@ body {
 </div>
 
 <script>
-function myFunction() {
+function FunctionOne() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -149,12 +150,12 @@ function myFunction() {
     }
 }
 
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {FunctionTwo()};
 
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 
-function myFunction() {
+function FunctionTwo() {
   if (window.pageYOffset > sticky) {
     header.classList.add("sticky");
   } else {
