@@ -119,11 +119,11 @@ body {
 <div class="content">
 
 <ul id="list">
-<lh class=title>Drinks</lh>
+<lh id="Category" class=title>Drinks</lh>
   <li><a style="padding: 6px 12px">Coffee<br><small>All varieties, including: </small><span class=check>✓</span></a></li>
   <li><a style="padding: 6px 12px">Fountain Soda<br><small>All varieties, including: </small><span class=check>✓</span></a></li>
   <li><a>Cereal<span class=check>✓</span></a></li>
-<lh class=title>Salad Bar</lh>
+<lh id="Category" class=title>Salad Bar</lh>
   <li><a>Cottage Cheese<span class=check>✓</span></a></li>
   <li><a>Hemp Granola<span class=check>✓</span></a></li>
   <li><a>Processed Strawberries<span class=ex>✗</span></a></li>
@@ -134,19 +134,21 @@ body {
 
 <script>
 function FunctionOne() {
-    var input, filter, ul, li, a, i, txtValue;
+    var input, filter, ul, li, c, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     ul = document.getElementById("list");
     li = ul.getElementsByTagName("li");
+    c = document.getElementsByTagName("lh");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
         txtValue = a.textContent || a.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             li[i].style.display = "";
+            c[i].style.display = "none";
         } else {
             li[i].style.display = "none";
-        }
+            }
     }
 }
 
