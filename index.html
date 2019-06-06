@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+}
+
+#list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#list li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-family: Tw Cen MT;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;  
+}
+
+.check {
+  cursor: default;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 12px 16px;
+  transform: translate(0%, -50%);
+  background-color: #34A70D;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.ex {
+  cursor: default;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 12px 18px;
+  transform: translate(0%, -50%);
+  background-color: #F75E5C;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+  
+.title {
+  font-family: Tw Cen MT;
+  font-size: 16px;
+  font-weight: bold;
+  /* font-style: italic; */
+  margin-top: 12px;
+  color: black;
+  display: block
+}
+
+#list li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+#list li b:hover:not(.header) {
+  background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<h2 style="font-family:Tw Cen MT;">Kosher Food List</h2>
+
+<input style="font-family:Tw Cen MT;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for food..." title="Type in a name" autofocus>
+
+<ul id=list>
+<lh class=title>Drinks</lh>
+  <li><a style="padding: 6px 12px">Coffee<br><small>All varieties, including: </small><span class=check>✓</span></a></li>
+  <li><a style="padding: 6px 12px">Fountain Soda<br><small>All varieties, including: </small><span class=check>✓</span></a></li>
+  <li><a>Cereal<span class=check>✓</span></a></li>
+<h2 class=title>Salad Bar</h2>
+  <li><a>Cottage Cheese<span class=check>✓</span></a></li>
+  <li><a>Hemp Granola<span class=check>✓</span></a></li>
+  <li><a>Processed Strawberries<span class=ex>✗</span></a></li>
+  <li><a>Strawberry Yogurt<span class=check>✓</span></a></li>
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("list");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
