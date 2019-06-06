@@ -7,11 +7,43 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+}
+
+.top-container {
+  background-color: #f1f1f1;
+  padding: 3px;
+  text-align: center;
+}
+
+.header {
+  padding: 10px 16px;
+  background: #FFFFFF;
+  color: #f1f1f1;
+  z-index: 950;
+}
+
+.content {
+  padding: 0px 16px 0px 16px;
+  z-index: 900;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 66px;
+}
+
 #myInput {
   /* background-image: url('/css/searchicon.png');
   background-position: 10px 12px;
   background-repeat: no-repeat; */
-  position: fixed;
+  position: relative;
   width: 100%;
   font-size: 16px;
   padding: 12px 40px 12px 12px;
@@ -20,7 +52,7 @@
 
 #list {
   list-style-type: none;
-  padding: 45px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
   margin: 0;
 }
 
@@ -75,9 +107,15 @@
 </head>
 <body>
 
+<div class="top-container">
 <h2 style="font-family:Tw Cen MT;">Kosher Food List</h2>
+</div>
 
-<input style="font-family:Tw Cen MT;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for food..." title="Type in a name" autofocus>
+<div class="header" id="myHeader">
+  <input style="font-family:Tw Cen MT;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for food..." title="Type in a name" autofocus>
+</div>
+
+<div class="content">
 
 <ul id=list>
 <lh class=title>Drinks</lh>
@@ -90,6 +128,8 @@
   <li><a>Processed Strawberries<span class=ex>✗</span></a></li>
   <li><a>Strawberry Yogurt<span class=check>✓</span></a></li>
 </ul>
+
+</div>
 
 <script>
 function myFunction() {
@@ -108,6 +148,20 @@ function myFunction() {
         }
     }
 }
+
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
 </script>
 
 </body>
